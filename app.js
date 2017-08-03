@@ -1,3 +1,5 @@
+'use strict'
+
 var app = require('express')();
 var http = require('http').Server(app);
 var body = require('body-parser');
@@ -24,8 +26,8 @@ app.get('/map', function(req, res) {
   res.sendFile(__dirname + '/map.html');
 });
 
-http.listen(3000, function() {
-  console.log('listening on *:3000');
+var server = http.listen(process.env.PORT || '8080', function() {
+  console.log('listening on *:%s', server.address().port);
 });
 
 
